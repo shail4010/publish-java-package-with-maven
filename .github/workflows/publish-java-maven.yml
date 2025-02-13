@@ -11,10 +11,10 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           java-version: '11'
-          distribution: 'temurin'
-          server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-          settings-path: ${{ github.workspace }}
+          distribution: 'adopt'
+          # server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+          # settings-path: ${{ github.workspace }}
       - name: Publish package
-        run: mvn clean deploy # mvn --batch-mode deploy
-        # env:
-        #   GITHUB_TOKEN: ${{ secrets.JAVA_TOKEN }}
+        run: mvn --batch-mode deploy # mvn clean deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.JAVA_TOKEN }}
